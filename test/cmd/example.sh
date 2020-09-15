@@ -19,7 +19,7 @@ run_pod_tests() {
   "apiVersion": "v1",
   "metadata": {
     "name": "test",
-    "namespace": "kind"
+    "namespace": "default"
   },
   "spec": {
     "containers": [
@@ -32,10 +32,10 @@ run_pod_tests() {
 }
 __EOF__
 
-  hypercloud::test::get_object_assert pod/test "{{$id_field}}" 'test' "-n kind"
+  hypercloud::test::get_object_assert pod/test "{{$id_field}}" 'test' "-n default"
 
   kubectl delete pod test -n kind
-  hypercloud::test::get_object_assert pod/test "{{$id_field}}" '' "-n kind"
+  hypercloud::test::get_object_assert pod/test "{{$id_field}}" '' "-n default"
 
 
 
