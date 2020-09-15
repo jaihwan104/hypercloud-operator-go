@@ -78,6 +78,11 @@ runTests() {
 
   record_command run_pod_tests
 
+  if [[ -n "${foundError}" ]]; then
+    echo "FAILED TESTS: ""${foundError}"
+    exit 1
+  fi
+
   hypercloud::log::status "Test done"
 
 }
