@@ -78,9 +78,7 @@ runTests() {
 
   record_command run_pod_tests
 
-
-
-
+  hypercloud::log::status "Test done"
 
 }
 
