@@ -17,8 +17,10 @@ function record_command() {
     local name="$1"
     echo "Recording: ${name}"
     echo "Running command: $*"
-    $1
+    $@
+    echo "test111"
     local exitCode=$?
+    echo "test222"
     if [[ ${exitCode} -ne 0 ]]; then
       # Record failures for any non-canary commands
       if [ "${name}" != "record_command_canary" ]; then
