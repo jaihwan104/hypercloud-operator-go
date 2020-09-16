@@ -9,18 +9,18 @@ HYPERCLOUD_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/..
 source "${HYPERCLOUD_ROOT}/test/lib/logging.sh"
 source "${HYPERCLOUD_ROOT}/test/lib/test.sh"
 source "${HYPERCLOUD_ROOT}/test/cmd/example.sh"
+source "${HYPERCLOUD_ROOT}/test/lib/sh2ju.sh"
 
 function record_command() {
     set +o nounset
     set +o errexit
 
     local name="$1"
+    local output="${KUBE_JUNIT_REPORT_DIR:-/tmp/junit-results}"
     echo "Recording: ${name}"
     echo "Running command: $*"
-    $@
-    echo "test111"
+    juLog -output="${output}" -class="test-cmd" -name="${name}" "$@"
     local exitCode=$?
-    echo "test222"
     if [[ ${exitCode} -ne 0 ]]; then
       # Record failures for any non-canary commands
       if [ "${name}" != "record_command_canary" ]; then
