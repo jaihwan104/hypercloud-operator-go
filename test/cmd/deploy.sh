@@ -15,7 +15,7 @@ run_deploy_operator() {
   kind load docker-image ${image}
   make deploy IMG=${image}
 
-  
+
   kubectl get pod -n hypercloud-system
 
 
@@ -25,3 +25,4 @@ run_deploy_operator() {
 
 
 }
+
