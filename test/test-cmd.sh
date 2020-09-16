@@ -78,7 +78,7 @@ runTests() {
   export image_field0="(index .spec.template.spec.containers 0).image"
   export image_field1="(index .spec.template.spec.containers 1).image"
 
-  record_command run_pod_tests
+  record_command run_simple_tests
 
   if [[ -n "${foundError}" ]]; then
     echo "FAILED TESTS: ""${foundError}"
