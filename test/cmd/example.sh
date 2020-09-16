@@ -35,7 +35,7 @@ __EOF__
   hypercloud::test::get_object_assert pod/test "{{$id_field}}" 'test' "-n default"
 
   kubectl delete pod test -n default
-  hypercloud::test::get_object_assert pod/test "{{$id_field}}" 'sdf' "-n default"
+#  hypercloud::test::get_object_assert pod/test "{{$id_field}}" 'sdf' "-n default"
 
   echo "testerrrr"
 
